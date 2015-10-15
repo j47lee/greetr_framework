@@ -1,2 +1,2 @@
-var g = G$('jonathan', 'lee')
-console.log(g);
+var g = G$('Jonathan', 'Lee', 'fr')
+g.setlang('en').greet();

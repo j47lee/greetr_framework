@@ -5,30 +5,34 @@
     return new Greetr.init(firstname, lastname, language);
   };
 
-  var supportedLangs = ['en','es'];
+  var supportedlangs = ['en','es'];
 
   var greetings = {
     en: 'Hello',
     es: 'Hola'
   };
 
-  var formalGreetings = {
+  var formalgreetings = {
     en: 'Greetings',
     es: 'Saludos'
   };
 
-  var logMessages = {
+  var logmessages = {
     en: 'Logged in',
     es: 'Inicio sesion'
   };
 
   Greetr.prototype = {
+
+    //functions to use in methods =================================
     fullname: function(){
-      return this.firstname + ' ' + lastname;
+      return this.firstname + ' ' + this.lastname;
     },
     validate: function(){
-      if (supportedLangs.indexOf(this.language) === -1){
+      if (supportedlangs.indexOf(this.language) === -1){
         throw 'Invalid language';
+      } else {
+        console.log('"' + this.language + '" has been set as the language');
       }
     },
     greeting: function(){
@@ -37,10 +41,12 @@
     formalgreeting: function(){
       return formalgreetings[this.language] + ' ' + this.fullname();
     },
+
+    //methods for object =========================================
     greet: function(formal){
         var msg;
         if(formal){
-          msg = this.formalGreeting();
+          msg = this.formalgreeting();
         } else {
           msg = this.greeting();
         }
@@ -56,7 +62,7 @@
         }
         return this;
     },
-    setLang: function(lang){
+    setlang: function(lang){
         this.language = lang;
         this.validate();
         return this;
