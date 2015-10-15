@@ -18,6 +18,10 @@
   //points init to initial object
   Greetr.init.prototype = Greetr.prototype
 
+  //add to global object
+  global.Greetr = global.G$ = Greetr;
+
+
 })(window, $) //end IIFE
 
 
