@@ -5,7 +5,13 @@
     return new Greetr.init(firstname, lastname, language);
   }
 
-  Greetr.prototype = {}
+  Greetr.prototype = {
+
+    test: function(){
+      console.log('this is a test on the prototype');
+    }
+
+  }
 
   //object structure
   Greetr.init = function(firstname, lastname, language){
@@ -18,7 +24,7 @@
   //points init to initial object
   Greetr.init.prototype = Greetr.prototype
 
-  //add to global object
+  //add to global object and create alias
   global.Greetr = global.G$ = Greetr;
 
 
