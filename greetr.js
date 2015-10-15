@@ -23,7 +23,45 @@
   };
 
   Greetr.prototype = {
-  };
+    fullname: function(){
+      return this.firstname + ' ' + lastname;
+    },
+    validate: function(){
+      if (supportedLangs.indexOf(this.language) === -1){
+        throw 'Invalid language';
+      }
+    },
+    greeting: function(){
+      return greetings[this.language] + ' ' + this.firstname + '!';
+    },
+    formalgreeting: function(){
+      return formalgreetings[this.language] + ' ' + this.fullname();
+    },
+    greet: function(formal){
+        var msg;
+        if(formal){
+          msg = this.formalGreeting();
+        } else {
+          msg = this.greeting();
+        }
+
+        if(console){
+          console.log(msg);
+        }
+        return this;
+    },
+    log: function(){
+        if (console){
+          console.log(logMessages[this.language] + ': ' + this.fullname());
+        }
+        return this;
+    },
+    setLang: function(lang){
+        this.language = lang;
+        this.validate();
+        return this;
+    }
+  }; //end Greetr.prototype object literal
 
   //object structure
   Greetr.init = function(firstname, lastname, language){
