@@ -1,2 +1,2 @@
-var g = G$('Jonathan', 'Lee', 'fr')
-g.setlang('en').greet();
+var g = G$('Jonathan', 'Lee', 'en')
+g.HTMLgreeting('#greeting',true)

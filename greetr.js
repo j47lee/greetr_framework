@@ -1,4 +1,4 @@
-(function(global, jquery){
+(function(global, $){
 
   //calls new Greetr.init fn to create object
   var Greetr = function(firstname, lastname, language){
@@ -58,13 +58,32 @@
     },
     log: function(){
         if (console){
-          console.log(logMessages[this.language] + ': ' + this.fullname());
+          console.log(logmessages[this.language] + ': ' + this.fullname());
         }
         return this;
     },
     setlang: function(lang){
         this.language = lang;
         this.validate();
+        return this;
+    },
+    HTMLgreeting: function(selector, formal){
+        if (!$){
+          throw 'jQuery not loaded'
+        };
+        if (!selector){
+          throw 'Missing jQuery selector'
+        };
+
+        var msg;
+        if(formal){
+          msg = this.formalgreeting();
+        } else {
+          msg = this.greeting();
+        }
+
+        $(selector).html(msg);
+
         return this;
     }
   }; //end Greetr.prototype object literal
@@ -84,7 +103,7 @@
   global.Greetr = global.G$ = Greetr;
 
 
-})(window, $); //end IIFE
+})(window, jQuery); //end IIFE
 
 
 
