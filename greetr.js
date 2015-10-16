@@ -94,6 +94,8 @@
     self.firstname = firstname || '';
     self.lastname = lastname || '';
     self.language = language || 'en';
+
+    self.validate();
   };
 
   //points init to initial object
